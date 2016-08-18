@@ -24,8 +24,7 @@ export default class Register extends Component {
               </div>
 
               <div className="form-group register-password">
-                <input type="password" className="form-control" id="password" onBlur={checkPassword}
-                       placeholder="请输入密码(6-16位)"/>
+                <input type="password" className="form-control" id="password" onBlur={checkPassword} placeholder="请输入密码(6-16位)"/>
                 <div id="password-error" className=" tips"/>
               </div>
 
