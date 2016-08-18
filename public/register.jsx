@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 import {Link} from 'react-router';
-import {checkUsername, checkPassword, checkConfirmPassword, checkFormatInput} from '../api/users';
+import {checkUsername, checkPassword, checkConfirmPassword, checkFormatInput} from '../js/users';
 
 export default class Register extends Component {
   constructor(props) {
