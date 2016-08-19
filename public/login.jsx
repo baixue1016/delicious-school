@@ -38,7 +38,7 @@ export default class Login extends Component {
         <div className="row">
           <div className="col-md-4"></div>
           <div className="col-md-4 login-page">
-            <h1 className="login-head">Delicious School</h1>
+            <img className="img-responsive center-block picture-head" src="./img/name1.png"/>
             <form>
               <div className="form-group login-user">
                 <input type="text" className="form-control" id="username" placeholder="请输入8位学号"/>
