@@ -137,7 +137,6 @@ export default class Register extends Component {
         if (err) return console.error(err);
         if (res === 201) {
           alert("注册成功！");
-
         }
         if (res === 400) {
           alert("用户名或密码不正确！");
