@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import $ from 'jquery';
 import {Link} from 'react-router';
 import request from 'superagent';
 import {checkUsername, checkPassword, checkConfirmPassword} from './register-validate';
@@ -133,8 +132,6 @@ export default class Register extends Component {
         password: this.state.password
       })
       .end((err, res) => {
-
-        if (err) return console.error(err);
         if (res === 201) {
           alert("注册成功！");
         }
@@ -146,6 +143,7 @@ export default class Register extends Component {
           alert("用户名已存在！");
           return;
         }
+        if (err) return console.error(err);
       });
   }
 }

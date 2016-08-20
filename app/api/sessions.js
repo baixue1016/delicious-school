@@ -1,6 +1,6 @@
 import express from 'express';
 import User from '../db/entity/user';
-import validate from '../../share/validate';
+import validateLogin from '../../share/validate-login';
 const router = express.Router();
 
 router.post('/', function (req, res, next) {
@@ -8,21 +8,18 @@ router.post('/', function (req, res, next) {
     username: req.body.username,
     password: req.body.password
   };
-  const isValidate = validate(requestUser);
+  
+  const isValidate = validateLogin(requestUser);
   if (isValidate) {
     User.find({username: requestUser.username}, function (err, users) {
       if (err) return next(err);
       if (users) {
         return res.sendStatus(409);
       }
-      const user = new User(requestUser);
-      user.save(function (err) {
-        if (err) return next(err);
-        return res.sendStatus(201);
-      });
+
     })
   } else {
-    return res.sendStatus(400);
+    return res.sendStatus(201);
   }
 });
 
