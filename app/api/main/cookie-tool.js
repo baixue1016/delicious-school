@@ -29,11 +29,6 @@ function validateToken(token,callback) {
 
 }
 
-
-
-
-
-
 function findUser(username, callback) {
   User.findOne({username}, function (err, user) {
     if (err) return callback(err);
