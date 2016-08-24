@@ -1,13 +1,13 @@
 import express from 'express';
-import Dish from '../db/entity/dish';
+import Store from '../db/entity/store';
 const router = express.Router();
 
 router.post('/', function (req, res, next) {
   const id = req.body.id;
-  Dish.findOne({_id: id}, function (err, mealInfo) {
+  Store.findOne({_id: id}, function (err, store) {
     if (err) throw next(err);
-    if (mealInfo) {
-      res.send(mealInfo);
+    if (store) {
+      res.send(store);
     } else {
       res.send(false);
     }

@@ -12,16 +12,16 @@ function getUsernameFromToken(token) {
   return token.substring(0, separatorIndex);
 }
 
-function validateToken(token,callback) {
+function validateToken(token, callback) {
   if (token === null || token.length === 0 || !token.includes(':')) {
     return false;
-  }else{
+  } else {
     const username = getUsernameFromToken(token);
-    findUser(username, function (err,user) {
-      if (err)  return callback( err);
+    findUser(username, function (err, user) {
+      if (err)  return callback(err);
       if (user) {
         const {password} = user;
-        const newToken = generateToken(username, password) ;
+        const newToken = generateToken(username, password);
         callback(err, newToken === token);
       }
     });
@@ -38,4 +38,4 @@ function findUser(username, callback) {
     }
   });
 }
-module.exports = {getUsernameFromToken,validateToken,generateToken};
+module.exports = {getUsernameFromToken, validateToken, generateToken};

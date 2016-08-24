@@ -1,6 +1,3 @@
-/**
- * Created by fuhong on 8/24/16.
- */
 import express from 'express';
 import {getUsernameFromToken, validateToken} from './main/cookie-tool';
 

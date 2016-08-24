@@ -1,6 +1,7 @@
 const User = require('./entity/user');
 const Order = require('./entity/order');
 import Dish from './entity/dish';
+import Store from './entity/store';
 
 exports.findUser = function (req, res) {
   const username = req.body.username;

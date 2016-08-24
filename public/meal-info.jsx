@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 import request from 'superagent';
@@ -14,21 +13,22 @@ export default class MealInfo extends Component {
       storeInfo: {}
     };
   }
-  componentWillMount(){
+
+  componentWillMount() {
     this.getCookie();
     this.getDishInformation();
-   // this.getStore();
+    this.getStore();
   }
 
   render() {
-    const {dishname, dishprice, dishpicture}= this.state.mealInfo;
-    const {storename, storephone, storelocation}=this.state.storeInfo;
+    const {dishname, dishprice, dishpicture} = this.state.mealInfo;
+    const {storename, storephone, storelocation} = this.state.storeInfo;
 
     return (
       <div className="container-fluid">
         <div className="main-head">
           <Link to="main" className="logo">Delicious School</Link>
-          <Link to="order" className="main-top">我的订单</Link>
+          {/*<Link to="order" className="main-top">我的订单</Link>*/}
           <span className="main-top">欢迎{this.state.userName}</span>
         </div>
 
@@ -88,28 +88,27 @@ export default class MealInfo extends Component {
   }
 
 
-  getCookie(){
+  getCookie() {
     const self = this;
     request.post('/api/cookie')
-      .end((err,res) =>{
+      .end((err, res) => {
         const {username} = res.body;
         if (err) return alert(err);
         self.setState({
-          username:username
+          username: username
         });
       });
   }
 
-  getStore(){
-    // request.post('/api/stores')
-    //   .send({storename:this.state.mealInfo.dishstore})
-    //   .end((err,res)=>{
-    //     if(err) return alert(err);
-    //     const storeInfo = res.body;
-    //     this.setState({
-    //       storeInfo:storeInfo
-    //     });
-    //     alert(storeInfo.storename + '           000000000');
-    //   });
+  getStore() {
+    request.post('/api/stores')
+      .send({storename:this.state.mealInfo.dishstore})
+      .end((err,res)=>{
+        if(err) return alert(err);
+        const storeInfo = res.body;
+        this.setState({
+          storeInfo:storeInfo
+        });
+      });
   }
 }

@@ -13,11 +13,11 @@ router.post('/', function (req, res, next) {
   });
 });
 
-router.post('/storeOfDishes',function (req,res,next) {
+router.post('/storeOfDishes', function (req, res, next) {
   const {dishstore} = req.body;
-  Dish.find({dishstore:dishstore},function (err,storeOfDishes) {
+  Dish.find({dishstore: dishstore}, function (err, storeOfDishes) {
     if (err) return next(err);
-    if(storeOfDishes){
+    if (storeOfDishes) {
       return res.send({storeOfDishes});
     }
     return res.send(false);
