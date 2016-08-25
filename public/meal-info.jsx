@@ -28,7 +28,6 @@ export default class MealInfo extends Component {
       <div className="container-fluid">
         <div className="main-head">
           <Link to="main" className="logo">Delicious School</Link>
-          {/*<Link to="order" className="main-top">我的订单</Link>*/}
           <span className="main-top">欢迎{this.state.userName}</span>
         </div>
 
